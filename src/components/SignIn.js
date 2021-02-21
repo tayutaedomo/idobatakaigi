@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -44,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn({setName}) {
+export default function SignIn({ setName }) {
   const classes = useStyles();
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState('');
