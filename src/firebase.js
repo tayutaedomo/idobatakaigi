@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 const {
   REACT_APP_FIREBASE_API_KEY,
@@ -23,6 +24,20 @@ firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
 export const messagesRef = database.ref('messages');
 
+const auth = firebase.auth();
+console.log(auth);
+
 export const pushMessage = ({ name, text }) => {
   messagesRef.push({ name, text });
+};
+
+export const signInAnonymously = () => {
+  auth
+    .signInAnonymously()
+    .then(() => {
+      console.log('Signed in as anonymous.');
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 };
