@@ -25,7 +25,6 @@ const database = firebase.database();
 export const messagesRef = database.ref('messages');
 
 const auth = firebase.auth();
-console.log(auth);
 
 export const pushMessage = ({ name, text }) => {
   messagesRef.push({ name, text });
