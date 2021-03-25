@@ -21,17 +21,23 @@ const MessageList = () => {
     messagesRef
       .orderByKey()
       .limitToLast(15)
-      .on('value', (snapshot) => {
-        const messages = snapshot.val();
-        if (messages === null) return;
+      .on(
+        'value',
+        (snapshot) => {
+          const messages = snapshot.val();
+          if (messages === null) return;
 
-        const entries = Object.entries(messages);
-        const newMessages = entries.map((entry) => {
-          const [key, nameAndText] = entry;
-          return { key, ...nameAndText };
-        });
-        setMessages(newMessages);
-      });
+          const entries = Object.entries(messages);
+          const newMessages = entries.map((entry) => {
+            const [key, nameAndText] = entry;
+            return { key, ...nameAndText };
+          });
+          setMessages(newMessages);
+        },
+        (err) => {
+          console.error(err);
+        }
+      );
   }, []);
 
   const length = messages.length;
